@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Save The Date — 30 Mei</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #fdf6ee;
+    --blush: #f2c4ce;
+    --rose: #c9748a;
+    --dusty: #a65470;
+    --deep: #3d1a24;
+    --gold: #c8a96e;
+    --gold-light: #e8d5a3;
+    --white: #fffaf5;
+  }
+
+  html, body {
+    height: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    background: var(--cream);
+    font-family: 'Montserrat', sans-serif;
+    color: var(--deep);
+    cursor: default;
+  }
+
+  /* FLOATING PETALS */
+  .petal-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .petal {
+    position: absolute;
+    top: -60px;
+    width: 14px;
+    height: 18px;
+    border-radius: 50% 0 50% 0;
+    opacity: 0.55;
+    animation: fallDown linear infinite;
+  }
+
+  @keyframes fallDown {
+    0%   { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0.6; }
+    50%  { transform: translateY(50vh) rotate(180deg) translateX(30px); }
+    100% { transform: translateY(110vh) rotate(360deg) translateX(-20px); opacity: 0; }
+  }
+
+  /* PAGE SECTIONS */
+  .page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 3rem 1.5rem;
+    z-index: 1;
+  }
+
+  /* ========== COVER ========== */
+  #cover {
+    background: linear-gradient(160deg, #1a0a10 0%, #3d1a24 40%, #6b2e45 100%);
+    overflow: hidden;
+  }
+
+  #cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 60%, rgba(200,169,110,0.12) 0%, transparent 65%);
+  }
+
+  .cover-ornament {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    animation: fadeUp 1.4s ease both;
+  }
+
+  .cover-ornament .line-h {
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0.3rem 0;
+  }
+
+  .cover-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+
+  .cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 10vw, 6rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.05;
+    text-align: center;
+    letter-spacing: 0.01em;
+  }
+
+  .cover-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+    font-weight: 300;
+    color: var(--gold-light);
+    letter-spacing: 0.08em;
+    margin-top: 0.4rem;
+  }
+
+  .cover-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem, 5vw, 2.2rem);
+    font-weight: 400;
+    color: var(--white);
+    letter-spacing: 0.12em;
+    margin-top: 1.2rem;
+  }
+
+  .cover-scroll {
+    margin-top: 3rem;
+    color: var(--gold-light);
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    animation: bounce 2.5s ease infinite;
+  }
+
+  .cover-scroll::after {
+    content: '';
+    display: block;
+    margin: 0.5rem auto 0;
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ========== MESSAGE ========== */
+  #message {
+    background: var(--white);
+    position: relative;
+  }
+
+  #message::before {
+    content: '\201C';
+    position: absolute;
+    top: 1.5rem; left: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8rem;
+    color: var(--blush);
+    opacity: 0.4;
+    line-height: 1;
+  }
+
+  .message-card {
+    max-width: 600px;
+    text-align: center;
+    padding: 3rem 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .message-card .section-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 1.8rem;
+  }
+
+  .message-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 3.5vw, 1.65rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.85;
+    color: var(--deep);
+    margin-bottom: 2rem;
+  }
+
+  .message-sign {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    color: var(--rose);
+  }
+
+  .divider-flower {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem auto;
+    max-width: 240px;
+  }
+
+  .divider-flower .line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--blush));
+  }
+
+  .divider-flower .line.r {
+    background: linear-gradient(to left, transparent, var(--blush));
+  }
+
+  .divider-flower .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--rose);
+    opacity: 0.7;
+  }
+
+  /* ========== DATE ========== */
+  #date-section {
+    background: linear-gradient(170deg, #fdf0f4 0%, var(--cream) 100%);
+    position: relative;
+  }
+
+  .date-card {
+    max-width: 560px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid rgba(200, 116, 138, 0.25);
+    border-radius: 4px;
+    padding: 3.5rem 2.5rem;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(4px);
+    position: relative;
+  }
+
+  .date-card::before,
+  .date-card::after {
+    content: '';
+    position: absolute;
+    width: 40px; height: 40px;
+    border-color: var(--gold);
+    border-style: solid;
+  }
+
+  .date-card::before {
+    top: 12px; left: 12px;
+    border-width: 1px 0 0 1px;
+  }
+
+  .date-card::after {
+    bottom: 12px; right: 12px;
+    border-width: 0 1px 1px 0;
+  }
+
+  .date-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 2rem;
+  }
+
+  .date-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4.5rem, 18vw, 8rem);
+    font-weight: 300;
+    color: var(--deep);
+    line-height: 0.9;
+  }
+
+  .date-month {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-weight: 400;
+    color: var(--dusty);
+    letter-spacing: 0.15em;
+    margin: 0.6rem 0;
+  }
+
+  .date-time {
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-top: 0.8rem;
+  }
+
+  /* Countdown */
+  .countdown {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .count-item {
+    text-align: center;
+  }
+
+  .count-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--deep);
+    display: block;
+    line-height: 1;
+  }
+
+  .count-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-top: 0.3rem;
+    display: block;
+  }
+
+  .count-sep {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: var(--blush);
+    align-self: flex-start;
+    margin-top: 0.5rem;
+  }
+
+  /* ========== RSVP ========== */
+  #rsvp {
+    background: linear-gradient(160deg, #3d1a24 0%, #6b2e45 60%, #8a3d5a 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #rsvp::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 70%, rgba(200,169,110,0.1) 0%, transparent 60%);
+  }
+
+  .rsvp-card {
+    max-width: 520px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .rsvp-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 7vw, 3.2rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--white);
+    margin-bottom: 0.8rem;
+  }
+
+  .rsvp-sub {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    opacity: 0.75;
+    margin-bottom: 2.5rem;
+  }
+
+  .rsvp-btn {
+    display: inline-block;
+    padding: 1rem 3rem;
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    background: transparent;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .rsvp-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(200,169,110,0.15);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+
+  .rsvp-btn:hover::before { transform: scaleX(1); }
+  .rsvp-btn:hover { color: var(--white); }
+
+  .rsvp-note {
+    margin-top: 2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.05em;
+  }
+
+  /* ========== MUSIC PLAYER ========== */
+  .music-player {
+    position: fixed;
+    bottom: 1.8rem;
+    right: 1.8rem;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.6rem;
+  }
+
+  .music-panel {
+    background: rgba(61, 26, 36, 0.92);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(200,169,110,0.3);
+    border-radius: 16px;
+    padding: 1rem 1.2rem;
+    max-width: 220px;
+    opacity: 0;
+    transform: translateY(12px) scale(0.95);
+    transition: all 0.35s ease;
+    pointer-events: none;
+  }
+
+  .music-panel.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+  }
+
+  .music-track-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--white);
+    margin-bottom: 0.2rem;
+  }
+
+  .music-track-sub {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    opacity: 0.65;
+    margin-bottom: 0.8rem;
+  }
+
+  .music-progress-bar {
+    width: 100%;
+    height: 2px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 2px;
+    margin-bottom: 0.6rem;
+    overflow: hidden;
+  }
+
+  .music-progress-fill {
+    height: 100%;
+    background: linear-gradient(to right, var(--rose), var(--gold));
+    border-radius: 2px;
+    width: 0%;
+    transition: width 1s linear;
+  }
+
+  .music-time {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  .music-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .ctrl-btn {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.6);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.2rem;
+    transition: color 0.2s;
+    line-height: 1;
+  }
+
+  .ctrl-btn:hover { color: var(--white); }
+  .ctrl-btn.play-main {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(200,169,110,0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold-light);
+    font-size: 0.85rem;
+  }
+
+  .ctrl-btn.play-main:hover {
+    background: rgba(200,169,110,0.2);
+    color: var(--white);
+  }
+
+  .music-toggle {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--dusty), var(--deep));
+    border: 1px solid rgba(200,169,110,0.4);
+    color: var(--gold-light);
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(61,26,36,0.5);
+  }
+
+  .music-toggle:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 28px rgba(61,26,36,0.7);
+  }
+
+  .music-toggle.playing {
+    animation: pulse-ring 2.5s ease infinite;
+  }
+
+  @keyframes pulse-ring {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(200,169,110,0.4), 0 4px 20px rgba(61,26,36,0.5); }
+    50% { box-shadow: 0 0 0 10px rgba(200,169,110,0), 0 4px 20px rgba(61,26,36,0.5); }
+  }
+
+  /* ========== SCROLL REVEAL ========== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ========== MODAL RSVP ========== */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(30,10,16,0.75);
+    backdrop-filter: blur(6px);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+
+  .modal-backdrop.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .modal {
+    background: var(--white);
+    border-radius: 4px;
+    padding: 2.5rem;
+    max-width: 420px;
+    width: 100%;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.35s ease;
+    text-align: center;
+  }
+
+  .modal-backdrop.open .modal {
+    transform: scale(1);
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--rose);
+    line-height: 1;
+  }
+
+  .modal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--deep);
+    margin-bottom: 0.5rem;
+  }
+
+  .modal-sub {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 2rem;
+  }
+
+  .modal-input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgba(200,116,138,0.4);
+    padding: 0.7rem 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--deep);
+    background: transparent;
+    outline: none;
+    margin-bottom: 1.2rem;
+    transition: border-color 0.3s;
+  }
+
+  .modal-input:focus { border-color: var(--rose); }
+  .modal-input::placeholder { color: rgba(61,26,36,0.3); font-style: italic; }
+
+  .modal-choices {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    margin-bottom: 1.8rem;
+  }
+
+  .choice-pill {
+    padding: 0.55rem 1.4rem;
+    border: 1px solid rgba(200,116,138,0.4);
+    border-radius: 40px;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: var(--rose);
+    background: transparent;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.25s ease;
+  }
+
+  .choice-pill.active, .choice-pill:hover {
+    background: var(--rose);
+    border-color: var(--rose);
+    color: var(--white);
+  }
+
+  .modal-submit {
+    width: 100%;
+    padding: 0.9rem;
+    background: linear-gradient(135deg, var(--dusty), var(--deep));
+    border: none;
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 0.3s;
+  }
+
+  .modal-submit:hover { opacity: 0.85; }
+
+  .modal-success {
+    display: none;
+    padding: 2rem 0;
+  }
+
+  .modal-success .heart {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+    animation: heartbeat 1.2s ease infinite;
+  }
+
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+
+  .modal-success p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--deep);
+    line-height: 1.7;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 480px) {
+    .date-card { padding: 2.5rem 1.5rem; }
+    .countdown { gap: 1rem; }
+    .count-sep { display: none; }
+    .music-player { bottom: 1rem; right: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- FLOATING PETALS -->
+<div class="petal-container" id="petals"></div>
+
+<!-- ======= COVER ======= -->
+<section class="page" id="cover">
+  <div class="cover-ornament">
+    <span class="cover-label">You are cordially invited</span>
+    <div class="line-h"></div>
+
+    <h1 class="cover-title">Save<br>the Date</h1>
+
+    <div class="line-h"></div>
+    <p class="cover-date">31 Mei 2026</p>
+    <p class="cover-subtitle">giving gift</p>
+
+    <div class="cover-scroll">scroll</div>
+  </div>
+</section>
+
+<!-- ======= MESSAGE ======= -->
+<section class="page" id="message">
+  <div class="message-card reveal">
+    <p class="section-label">I have a message for u</p>
+
+    <p class="message-text">
+      Setelah dari kemarin tertunda terus akhirnya bakalan sampai juga hadiahnya ke kamu wkwk
+      
+    </p>
+
+    <div class="divider-flower">
+      <div class="line"></div>
+      <div class="dot"></div>
+      <div class="line r"></div>
+    </div>
+
+    <span class="message-sign">— with a sincerity</span>
+  </div>
+</section>
+
+<!-- ======= DATE ======= -->
+<section class="page" id="date-section">
+  <div class="date-card reveal">
+    <p class="date-label">Mark the moment</p>
+    <div class="date-number">31</div>
+    <div class="date-month">Mei</div>
+    <p class="date-time">Afternoon after makrab &nbsp;·&nbsp; Tempat MAKRAB</p>
+
+    <div class="divider-flower" style="margin: 2rem auto;">
+      <div class="line"></div>
+      <div class="dot"></div>
+      <div class="line r"></div>
+    </div>
+
+    <p style="font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--rose); margin-bottom:1rem;">Let The countdown begin</p>
+
+    <div class="countdown" id="countdown">
+      <div class="count-item">
+        <span class="count-num" id="cnt-d">--</span>
+        <span class="count-label">Hari</span>
+      </div>
+      <span class="count-sep">·</span>
+      <div class="count-item">
+        <span class="count-num" id="cnt-h">--</span>
+        <span class="count-label">Jam</span>
+      </div>
+      <span class="count-sep">·</span>
+      <div class="count-item">
+        <span class="count-num" id="cnt-m">--</span>
+        <span class="count-label">Menit</span>
+      </div>
+      <span class="count-sep">·</span>
+      <div class="count-item">
+        <span class="count-num" id="cnt-s">--</span>
+        <span class="count-label">Detik</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= RSVP ======= -->
+<section class="page" id="rsvp">
+  <div class="rsvp-card reveal">
+    <h2 class="rsvp-title">What will i give?</h2>
+    <p class="rsvp-sub">stay tune</p>
+
+    <button class="rsvp-btn" onclick="openModal()">
+      Angel cantik
+    </button>
+
+    <p class="rsvp-note">
+      "I love U."
+    </p>
+  </div>
+</section>
+
+<!-- ======= RSVP MODAL ======= -->
+<div class="modal-backdrop" id="modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+
+    <div id="modal-form">
+      <h3 class="modal-title">Save the date</h3>
+      <p class="modal-sub">31 Mei · Siang hari</p>
+
+      
+
+      <p style="font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--rose); margin-bottom:0.8rem;">Stay Tune</p>
+
+      <div class="modal-choices">
+        <button class="choice-pill active" id="pill-yes" onclick="selectPill('yes')">I Love 💕</button>
+        <button class="choice-pill" id="pill-no" onclick="selectPill('no')">U 3000</button>
+      </div>
+
+      
+    </div>
+
+    <div class="modal-success" id="modal-success">
+      <span class="heart">🌸</span>
+      <p id="success-msg">Thank you<br>stay tune.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ======= MUSIC PLAYER ======= -->
+<div class="music-player">
+  <div class="music-panel" id="music-panel">
+    <div class="music-track-name" id="track-name">Terbuang Dalam Waktu</div>
+    <div class="music-track-sub" id="track-sub">Barasuara</div>
+    <div class="music-progress-bar">
+      <div class="music-progress-fill" id="progress-fill"></div>
+    </div>
+    <div class="music-time">
+      <span id="time-cur">0:00</span>
+      <span id="time-dur">0:00</span>
+    </div>
+    <div class="music-controls">
+      <button class="ctrl-btn" onclick="prevTrack()" title="Sebelumnya">⏮</button>
+      <button class="ctrl-btn play-main" id="play-btn" onclick="togglePlay()">▶</button>
+      <button class="ctrl-btn" onclick="nextTrack()" title="Berikutnya">⏭</button>
+    </div>
+  </div>
+
+  <button class="music-toggle" id="music-toggle" onclick="togglePanel()" title="Musik">
+    🎵
+  </button>
+</div>
+
+<!-- Hidden audio -->
+<audio id="audio-player" loop></audio>
+
+<script>
+// ======= PETALS =======
+(function(){
+  const container = document.getElementById('petals');
+  const colors = ['#f2c4ce','#e8b4c1','#d4a0b5','#c9748a','#f7dce0','#e8d5a3'];
+  for(let i = 0; i < 18; i++){
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.style.cssText = `
+      left: ${Math.random()*100}%;
+      width: ${10+Math.random()*10}px;
+      height: ${14+Math.random()*10}px;
+      background: ${colors[Math.floor(Math.random()*colors.length)]};
+      animation-duration: ${6+Math.random()*8}s;
+      animation-delay: ${-Math.random()*8}s;
+      border-radius: ${Math.random()>0.5?'50% 0 50% 0':'0 50% 0 50%'};
+      transform: rotate(${Math.random()*360}deg);
+    `;
+    container.appendChild(p);
+  }
+})();
+
+// ======= SCROLL REVEAL =======
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+},{threshold:0.2});
+reveals.forEach(r=>observer.observe(r));
+
+// ======= COUNTDOWN =======
+function updateCountdown(){
+  const target = new Date('2026-05-31T12:00:00');
+  const now = new Date();
+  const diff = target - now;
+  if(diff <= 0){
+    document.getElementById('cnt-d').textContent = '0';
+    document.getElementById('cnt-h').textContent = '0';
+    document.getElementById('cnt-m').textContent = '0';
+    document.getElementById('cnt-s').textContent = '0';
+    return;
+  }
+  const d = Math.floor(diff/86400000);
+  const h = Math.floor((diff%86400000)/3600000);
+  const m = Math.floor((diff%3600000)/60000);
+  const s = Math.floor((diff%60000)/1000);
+  document.getElementById('cnt-d').textContent = String(d).padStart(2,'0');
+  document.getElementById('cnt-h').textContent = String(h).padStart(2,'0');
+  document.getElementById('cnt-m').textContent = String(m).padStart(2,'0');
+  document.getElementById('cnt-s').textContent = String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// ======= RSVP MODAL =======
+let rsvpChoice = 'yes';
+
+function openModal(){
+  document.getElementById('modal').classList.add('open');
+  document.getElementById('modal-form').style.display = 'block';
+  document.getElementById('modal-success').style.display = 'none';
+}
+
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+}
+
+document.getElementById('modal').addEventListener('click', function(e){
+  if(e.target === this) closeModal();
+});
+
+function selectPill(choice){
+  rsvpChoice = choice;
+  document.getElementById('pill-yes').classList.toggle('active', choice==='yes');
+  document.getElementById('pill-no').classList.toggle('active', choice==='no');
+}
+
+function submitRSVP(){
+  const name = document.getElementById('rsvp-name').value.trim() || 'Kamu';
+  document.getElementById('modal-form').style.display = 'none';
+  const msg = rsvpChoice === 'yes'
+    ? `Terima kasih, <em>${name}</em>!<br>Angel Cantik 🌸`
+    : `Terima kasih, <em>${name}</em>.<br>Angel Cantik 💕`;
+  document.getElementById('success-msg').innerHTML = msg;
+  document.getElementById('modal-success').style.display = 'block';
+}
+
+// ======= MUSIC PLAYER =======
+const tracks = [
+  { name: "Terbuang dalam waktu Piano", artist: "Barasuara", url: null },
+  { name: "Masa Ini Masa Nanti dan Masa Indah lainnya", artist: "NUCA", url: null },
+  { name: "Shape Of My Heart", artist: "Backstreet Boys", url: null },
+];
+
+let currentTrack = 0;
+let panelOpen = false;
+let isPlaying = false;
+const audio = document.getElementById('audio-player');
+
+function togglePanel(){
+  panelOpen = !panelOpen;
+  document.getElementById('music-panel').classList.toggle('visible', panelOpen);
+}
+
+function updateTrackInfo(){
+  const t = tracks[currentTrack];
+  document.getElementById('track-name').textContent = t.name;
+  document.getElementById('track-sub').textContent = t.artist;
+}
+
+function togglePlay(){
+  if(audio.src && audio.src !== window.location.href){
+    if(isPlaying){ audio.pause(); setPlaying(false); }
+    else { audio.play(); setPlaying(true); }
+  } else {
+    setPlaying(!isPlaying);
+    showNoAudioNote();
+  }
+}
+
+function setPlaying(state){
+  isPlaying = state;
+  document.getElementById('play-btn').textContent = state ? '⏸' : '▶';
+  document.getElementById('music-toggle').classList.toggle('playing', state);
+  if(state) simulateProgress();
+}
+
+let progressInterval = null;
+let fakeTime = 0;
+function simulateProgress(){
+  clearInterval(progressInterval);
+  const total = 214;
+  if(fakeTime === 0 || fakeTime >= total) fakeTime = 0;
+  progressInterval = setInterval(()=>{
+    if(!isPlaying){ clearInterval(progressInterval); return; }
+    fakeTime = Math.min(fakeTime+1, total);
+    const pct = (fakeTime/total)*100;
+    document.getElementById('progress-fill').style.width = pct+'%';
+    document.getElementById('time-cur').textContent = fmtTime(fakeTime);
+    document.getElementById('time-dur').textContent = fmtTime(total);
+    if(fakeTime >= total){ fakeTime = 0; }
+  }, 1000);
+}
+
+function fmtTime(s){
+  return Math.floor(s/60)+':'+(s%60<10?'0':'')+s%60;
+}
+
+function nextTrack(){
+  currentTrack = (currentTrack+1) % tracks.length;
+  fakeTime = 0;
+  updateTrackInfo();
+  if(isPlaying) simulateProgress();
+}
+
+function prevTrack(){
+  currentTrack = (currentTrack-1+tracks.length) % tracks.length;
+  fakeTime = 0;
+  updateTrackInfo();
+  if(isPlaying) simulateProgress();
+}
+
+let noteShown = false;
+function showNoAudioNote(){
+  if(noteShown) return;
+  noteShown = true;
+  const n = document.createElement('div');
+  n.style.cssText = `
+    position:fixed; bottom:5rem; right:1.8rem; z-index:150;
+    background:rgba(61,26,36,0.92); border:1px solid rgba(200,169,110,0.3);
+    border-radius:10px; padding:0.8rem 1rem; max-width:220px;
+    font-size:0.68rem; color:rgba(255,255,255,0.75); line-height:1.5;
+    font-family:'Montserrat',sans-serif;
+  `;
+  n.textContent = '💡 Tambahkan file lagu (.mp3) dengan mengubah URL pada kode audio, atau dengarkan sambil membuka Spotify!';
+  document.body.appendChild(n);
+  setTimeout(()=>n.remove(), 5000);
+}
+
+updateTrackInfo();
+document.getElementById('time-dur').textContent = '3:34';
+</script>
+</body>
+</html>
